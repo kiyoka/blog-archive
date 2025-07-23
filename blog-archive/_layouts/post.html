@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%m月%d日" }}</time>
+  </header>
+  
+  <div class="content">
+    {{ content }}
+  </div>
+  
+  <nav>
+    <a href="{{ '/blog-archive/' | relative_url }}">&larr; 記事一覧に戻る</a>
+  </nav>
+</article>

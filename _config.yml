@@ -1,0 +1,37 @@
+# Jekyll configuration for GitHub Pages
+title: Blog Archive
+description: Archive of old blog posts
+baseurl: "/blog-archive"
+url: "https://kiyoka.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - memo.txt
+
+# Permalink structure for blog posts
+permalink: /blog-archive/:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog-archive/:year/:month/:day/:title/
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "blog-archive"
+    values:
+      layout: "default"
