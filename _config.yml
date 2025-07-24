@@ -22,7 +22,7 @@ permalink: /:year/:month/:day/:title/
 collections:
   posts:
     output: true
-    permalink: /blog-archive/:year/:month/:day/:title/
+    permalink: /:year/:month/:day/:title/
 
 # Default values
 defaults:
