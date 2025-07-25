@@ -1,7 +1,7 @@
 # Jekyll configuration for GitHub Pages
 title: Blog Archive
 description: Archive of old blog posts
-baseurl: "/blog-archive"
+baseurl: ""
 url: "https://kiyoka.github.io"
 
 # Build settings
