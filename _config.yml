@@ -16,7 +16,7 @@ exclude:
   - memo.txt
 
 # Permalink structure for blog posts
-permalink: /blog-archive/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
 
 # Default values
 defaults:
