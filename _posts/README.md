@@ -1,2 +1,2 @@
-# kiyoka.github.io
-site of kiyoka
+# blog-archive
+Archive of old blog posts
