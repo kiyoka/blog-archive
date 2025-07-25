@@ -89,6 +89,105 @@ article nav {
   font-size: 0.9em;
 }
 
+/* Amazon書籍リンクのスタイル */
+.amazon-widget {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #fafafa;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.amazon-image {
+  flex-shrink: 0;
+}
+
+.amazon-image img {
+  max-width: 120px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.amazon-content {
+  flex: 1;
+}
+
+.amazon-title {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.amazon-title a {
+  color: #0073bb;
+  text-decoration: none;
+}
+
+.amazon-title a:hover {
+  text-decoration: underline;
+}
+
+.amazon-author {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.amazon-description {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+.amazon-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.amazon-link,
+.amazon-affiliate-link {
+  background-color: #ff9900;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.amazon-link:hover,
+.amazon-affiliate-link:hover {
+  background-color: #e88900;
+  text-decoration: none;
+}
+
+.amazon-affiliate-link {
+  background-color: #232f3e;
+}
+
+.amazon-affiliate-link:hover {
+  background-color: #1a252f;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .amazon-widget {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .amazon-image {
+    align-self: center;
+  }
+}
+
 footer {
   margin-top: 60px;
   padding-top: 20px;

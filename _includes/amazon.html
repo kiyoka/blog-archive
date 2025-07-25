@@ -1,0 +1,46 @@
+<!-- Amazon書籍リンクテンプレート -->
+<div class="amazon-widget">
+  {% if include.image != "false" %}
+  <div class="amazon-image">
+    <a href="https://www.amazon.co.jp/dp/{{ include.asin }}" target="_blank" rel="nofollow noopener">
+      <img src="https://images-na.ssl-images-amazon.com/images/P/{{ include.asin }}.01.M.jpg" 
+           alt="{{ include.title | default: 'Amazon商品' }}" 
+           loading="lazy">
+    </a>
+  </div>
+  {% endif %}
+  
+  <div class="amazon-content">
+    <h3 class="amazon-title">
+      <a href="https://www.amazon.co.jp/dp/{{ include.asin }}" target="_blank" rel="nofollow noopener">
+        {{ include.title | default: "Amazon商品" }}
+      </a>
+    </h3>
+    
+    {% if include.author %}
+    <p class="amazon-author">著者: {{ include.author }}</p>
+    {% endif %}
+    
+    {% if include.description %}
+    <p class="amazon-description">{{ include.description }}</p>
+    {% endif %}
+    
+    <div class="amazon-actions">
+      <a href="https://www.amazon.co.jp/dp/{{ include.asin }}" 
+         target="_blank" 
+         rel="nofollow noopener" 
+         class="amazon-link">
+        Amazonで見る
+      </a>
+      
+      {% if include.affiliate_tag %}
+      <a href="https://www.amazon.co.jp/dp/{{ include.asin }}?tag={{ include.affiliate_tag }}" 
+         target="_blank" 
+         rel="nofollow noopener" 
+         class="amazon-affiliate-link">
+        Amazon（アフィリエイト）
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
