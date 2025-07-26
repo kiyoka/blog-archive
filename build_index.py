@@ -10,20 +10,37 @@ from llama_index.core import Document, VectorStoreIndex, Settings
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
+from llama_index.llms.openai_like import OpenAILike
 from typing import List, Dict, Any
 
 # Load environment variables
 load_dotenv()
 
 def setup_llama_index():
-    """Configure llama-index with OpenAI models."""
-    # Set up the LLM
-    llm = OpenAI(
-        model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
-        api_key=os.getenv("OPENAI_API_KEY")
-    )
+    """Configure llama-index with local LLM or OpenAI models."""
+    # Check if local LLM should be used
+    local_llm_url = os.getenv("LOCAL_LLM_URL")
+    local_llm_model = os.getenv("LOCAL_LLM_MODEL")
     
-    # Set up embeddings
+    if local_llm_url and local_llm_model:
+        # Set up local LLM
+        print(f"Using local LLM: {local_llm_model} at {local_llm_url}")
+        llm = OpenAILike(
+            model=local_llm_model,
+            api_base=local_llm_url + "/v1",
+            api_key="dummy",  # local server doesn't need real API key
+            is_chat_model=True,
+            timeout=30.0,
+            temperature=0.1
+        )
+    else:
+        # Set up OpenAI LLM (fallback)
+        llm = OpenAI(
+            model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+            api_key=os.getenv("OPENAI_API_KEY")
+        )
+    
+    # Set up embeddings (still using OpenAI for now)
     embed_model = OpenAIEmbedding(
         model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002"),
         api_key=os.getenv("OPENAI_API_KEY")
@@ -96,9 +113,10 @@ def main():
     posts_data_file = "posts_data.json"
     index_storage_dir = "./storage"
     
-    # Check if OpenAI API key is set
+    # Check if embeddings configuration is set (OpenAI API key still needed for embeddings)
     if not os.getenv("OPENAI_API_KEY"):
         print("Error: OPENAI_API_KEY environment variable not set!")
+        print("OpenAI API key is required for text embeddings even when using local LLM.")
         print("Please copy .env.example to .env and set your OpenAI API key.")
         return
     

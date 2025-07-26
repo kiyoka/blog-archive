@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from llama_index.core import VectorStoreIndex, load_index_from_storage, StorageContext, Settings
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.llms.openai import OpenAI
+from llama_index.llms.openai_like import OpenAILike
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.response_synthesizers import get_response_synthesizer
@@ -17,14 +18,30 @@ from llama_index.core.response_synthesizers import get_response_synthesizer
 load_dotenv()
 
 def setup_llama_index():
-    """Configure llama-index with OpenAI models."""
-    # Set up the LLM
-    llm = OpenAI(
-        model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
-        api_key=os.getenv("OPENAI_API_KEY")
-    )
+    """Configure llama-index with local LLM or OpenAI models."""
+    # Check if local LLM should be used
+    local_llm_url = os.getenv("LOCAL_LLM_URL")
+    local_llm_model = os.getenv("LOCAL_LLM_MODEL")
     
-    # Set up embeddings
+    if local_llm_url and local_llm_model:
+        # Set up local LLM
+        print(f"Using local LLM: {local_llm_model} at {local_llm_url}")
+        llm = OpenAILike(
+            model=local_llm_model,
+            api_base=local_llm_url + "/v1",
+            api_key="dummy",  # local server doesn't need real API key
+            is_chat_model=True,
+            timeout=30.0,
+            temperature=0.1
+        )
+    else:
+        # Set up OpenAI LLM (fallback)
+        llm = OpenAI(
+            model=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+            api_key=os.getenv("OPENAI_API_KEY")
+        )
+    
+    # Set up embeddings (still using OpenAI for now)
     embed_model = OpenAIEmbedding(
         model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002"),
         api_key=os.getenv("OPENAI_API_KEY")
@@ -155,10 +172,15 @@ def main():
     """Main function."""
     storage_dir = "./storage"
     
-    # Check if OpenAI API key is set
-    if not os.getenv("OPENAI_API_KEY"):
-        print("Error: OPENAI_API_KEY environment variable not set!")
-        print("Please copy .env.example to .env and set your OpenAI API key.")
+    # Check if LLM configuration is set
+    local_llm_url = os.getenv("LOCAL_LLM_URL")
+    local_llm_model = os.getenv("LOCAL_LLM_MODEL")
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    
+    if not (local_llm_url and local_llm_model) and not openai_api_key:
+        print("Error: Either LOCAL_LLM_URL & LOCAL_LLM_MODEL or OPENAI_API_KEY must be set!")
+        print("For local LLM, set LOCAL_LLM_URL and LOCAL_LLM_MODEL in .env")
+        print("For OpenAI, set OPENAI_API_KEY in .env")
         return
     
     # Check if index exists

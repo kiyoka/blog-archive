@@ -6,17 +6,37 @@
 
 ### 1. 依存関係のインストール
 
+#### 仮想環境を使用する場合（推奨）
+
+```bash
+# 仮想環境の作成
+python -m venv venv
+
+# 仮想環境の有効化（Linux/Mac）
+source venv/bin/activate
+
+# 仮想環境の有効化（Windows）
+venv\Scripts\activate
+
+# 依存関係のインストール
+pip install -r requirements.txt
+```
+
+#### システム全体にインストールする場合
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 2. 環境変数の設定
 
-`.env.example`をコピーして`.env`ファイルを作成し、OpenAI API keyを設定してください。
+`.env.example`をコピーして`.env`ファイルを作成し、API keyを設定してください。
 
 ```bash
 cp .env.example .env
 ```
+
+#### OpenAIを使用する場合
 
 `.env`ファイルを編集してAPIキーを設定:
 
@@ -24,9 +44,29 @@ cp .env.example .env
 OPENAI_API_KEY=your_actual_openai_api_key_here
 ```
 
+#### ローカルLLMを使用する場合
+
+ローカルでLLMサーバーを起動し、以下のように設定:
+
+```
+# ローカルLLM設定（OpenAIの代替）
+LOCAL_LLM_URL=http://192.168.56.1:1234
+LOCAL_LLM_MODEL=llm-jp-3.1-13b-instruct4
+
+# 埋め込みにはOpenAI APIが必要（検索機能用）
+OPENAI_API_KEY=your_actual_openai_api_key_here
+```
+
+**注意**: 埋め込み（embeddings）にはOpenAI APIが必要です。回答生成にのみローカルLLMが使用されます。
+
 ### 3. ブログ記事データの抽出
 
 ```bash
+# 仮想環境を使用している場合は事前に有効化
+source venv/bin/activate  # Linux/Mac
+# または
+venv\Scripts\activate     # Windows
+
 python extract_posts.py
 ```
 
@@ -41,6 +81,14 @@ python build_index.py
 これにより、抽出したブログ記事からベクトルインデックスを構築し、`./storage`ディレクトリに保存します。
 
 ## 使用方法
+
+**注意**: 仮想環境を使用している場合は、以下のコマンドを実行する前に仮想環境を有効化してください：
+
+```bash
+source venv/bin/activate  # Linux/Mac
+# または
+venv\Scripts\activate     # Windows
+```
 
 ### インタラクティブモード
 
