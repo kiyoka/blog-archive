@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="tag-page">
+  <h1>「{{ page.tag }}」カテゴリの記事</h1>
+
+  <div class="posts">
+    {% assign posts_count = 0 %}
+    {% for post in site.posts %}
+      {% if post.categories contains page.tag %}
+        {% assign posts_count = posts_count | plus: 1 %}
+        <div class="post-preview">
+          <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+          <p class="post-meta">{{ post.date | date: "%Y年%m月%d日" }}</p>
+          {% if post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <p class="posts-count">{{ posts_count }}件の記事があります。</p>
+
+  <div class="tag-nav">
+    <a href="{{ site.baseurl }}/">&larr; ホームに戻る</a>
+  </div>
+</div>

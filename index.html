@@ -5,6 +5,23 @@ title: 記事一覧
 
 <h1>ブログアーカイブ</h1>
 
+<div class="tag-navigation">
+  <h2>カテゴリ別に記事を探す</h2>
+  <div class="tag-links">
+    <a href="{{ site.baseurl }}/tag/nendo/" class="tag-link">Nendo (87)</a>
+    <a href="{{ site.baseurl }}/tag/book/" class="tag-link">本 (75)</a>
+    <a href="{{ site.baseurl }}/tag/sekka/" class="tag-link">Sekka (59)</a>
+    <a href="{{ site.baseurl }}/tag/programming/" class="tag-link">プログラミング (52)</a>
+    <a href="{{ site.baseurl }}/tag/language/" class="tag-link">言語 (28)</a>
+    <a href="{{ site.baseurl }}/tag/life/" class="tag-link">Life (25)</a>
+    <a href="{{ site.baseurl }}/tag/ruby/" class="tag-link">Ruby (22)</a>
+    <a href="{{ site.baseurl }}/tag/creative-psychology/" class="tag-link">創作心理 (18)</a>
+    <a href="{{ site.baseurl }}/tag/opensource/" class="tag-link">オープンソース (17)</a>
+    <a href="{{ site.baseurl }}/tag/music/" class="tag-link">音楽 (10)</a>
+  </div>
+</div>
+
+<h2>すべての記事</h2>
 <ul class="post-list">
   {% for post in site.posts %}
     <li>
