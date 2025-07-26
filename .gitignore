@@ -6,3 +6,4 @@ vendor/
 Gemfile.lock
 memo.txt
 .\#memo.txt
+venv/
