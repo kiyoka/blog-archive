@@ -26,13 +26,18 @@ def setup_llama_index():
     if local_llm_url and local_llm_model:
         # Set up local LLM
         print(f"Using local LLM: {local_llm_model} at {local_llm_url}")
+        # Get timeout from environment variable with default
+        local_llm_timeout = float(os.getenv("LOCAL_LLM_TIMEOUT", "120.0"))
+        print(f"Timeout: {local_llm_timeout}s")
+        
         llm = OpenAILike(
             model=local_llm_model,
             api_base=local_llm_url + "/v1",
             api_key="dummy",  # local server doesn't need real API key
             is_chat_model=True,
-            timeout=30.0,
-            temperature=0.1
+            timeout=local_llm_timeout,
+            temperature=0.1,
+            max_retries=1  # Reduce retries for faster failure
         )
     else:
         # Set up OpenAI LLM (fallback)
