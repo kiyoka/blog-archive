@@ -16,7 +16,11 @@
       "Bash(bundle exec:*)",
       "Bash(for:*)",
       "Bash(do python3 /tmp/convert_amazon.py \"$file\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(python:*)",
+      "Bash(pip install markdown pyyaml)",
+      "Bash(source:*)",
+      "Bash(pip install:*)"
     ],
     "deny": []
   }
