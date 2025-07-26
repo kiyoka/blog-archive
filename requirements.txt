@@ -1,5 +1,6 @@
 llama-index-core>=0.12.0
 llama-index-embeddings-openai
+llama-index-embeddings-huggingface
 llama-index-llms-openai
 llama-index-llms-openai-like
 openai>=1.3.0

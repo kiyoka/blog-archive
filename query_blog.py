@@ -8,6 +8,7 @@ import sys
 from dotenv import load_dotenv
 from llama_index.core import VectorStoreIndex, load_index_from_storage, StorageContext, Settings
 from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.openai_like import OpenAILike
 from llama_index.core.query_engine import RetrieverQueryEngine
@@ -41,11 +42,22 @@ def setup_llama_index():
             api_key=os.getenv("OPENAI_API_KEY")
         )
     
-    # Set up embeddings (still using OpenAI for now)
-    embed_model = OpenAIEmbedding(
-        model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002"),
-        api_key=os.getenv("OPENAI_API_KEY")
-    )
+    # Set up embeddings
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    use_local_embeddings = os.getenv("USE_LOCAL_EMBEDDINGS", "false").lower() == "true"
+    
+    if use_local_embeddings or not openai_api_key or openai_api_key == "your_openai_api_key_here":
+        # Use local embeddings
+        print("Using local embeddings (HuggingFace)")
+        embed_model = HuggingFaceEmbedding(
+            model_name="intfloat/multilingual-e5-small"
+        )
+    else:
+        # Use OpenAI embeddings
+        embed_model = OpenAIEmbedding(
+            model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002"),
+            api_key=openai_api_key
+        )
     
     # Configure global settings
     Settings.llm = llm
