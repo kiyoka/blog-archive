@@ -6,4 +6,4 @@ This repository contains an archive of old blog posts.
 
 ## 以下から閲覧できます
 
-[kiyokaのBlog Archive](https://kiyoka.github.io/blog-archive/)
+[kiyokaのブログアーカイブ](https://kiyoka.github.io/blog-archive/)
