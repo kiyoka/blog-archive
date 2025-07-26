@@ -7,3 +7,5 @@ Gemfile.lock
 memo.txt
 .\#memo.txt
 venv/
+\#memo.txt\#
+.env
