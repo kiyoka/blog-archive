@@ -31,6 +31,45 @@ header p {
   color: #666;
 }
 
+/* 検索ボックス */
+.search-box {
+  margin-top: 20px;
+}
+
+.search-box form {
+  display: flex;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.search-box input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-box input[type="text"]:focus {
+  outline: none;
+  border-color: #0073bb;
+}
+
+.search-box button {
+  padding: 8px 20px;
+  background-color: #0073bb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.search-box button:hover {
+  background-color: #005a8f;
+}
+
 main {
   min-height: 400px;
 }
@@ -185,6 +224,15 @@ article nav {
   
   .amazon-image {
     align-self: center;
+  }
+  
+  .search-box form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .search-box button {
+    width: 100%;
   }
 }
 
