@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kiyoka.github.io/blog-archive/sitemap.xml
