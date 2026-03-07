@@ -2,7 +2,7 @@
 title: kiyokaのブログアーカイブ
 description: Archive of old blog posts
 baseurl: "/blog-archive"
-url: "https://kiyoka.github.io/blog-archive"
+url: "https://kiyoka.github.io"
 
 # Build settings
 markdown: kramdown
