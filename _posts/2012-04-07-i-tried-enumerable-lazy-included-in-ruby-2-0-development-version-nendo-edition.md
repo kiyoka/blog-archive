@@ -1,0 +1,62 @@
+---
+layout: post
+title: "Ruby 2.0(開発版)に入ったEnumerable::Lazyを試してみた(Nendo編)"
+date: 2012-04-07
+categories: Ruby
+---
+「[Ruby 2.0(開発版)に入ったEnumerable::Lazyを試してみた](/blog-archive/2012/04/01/i-tried-enumerable-lazy-included-in-ruby-2-0-development-version/)」の続き。
+Ruby 2.0をビルドする手順は先日の記事を参照してほしい。
+今日は、Nendoでも試してみた。
+ ![img](http://farm4.static.flickr.com/3547/3389153383_a26bb54126_m.jpg) もうひとつLazyな写真
+
+*[Nendo*] 0.6.4でもそのままLazyの効果は出た。
+そういえば、書き忘れていたが、Lazyは使用メモリを削減するだけじゃなくて、計算量も削減するのだった。実際に必要な分しか計算しない。
+今回のサンプルプログラムでは、take 5 しているので、grepして見つかった最初の5行が見つかったところで計算を打ち切る。
+
+## Lazyの効果
+実際に大きなサイズのtest.txtを用意した。
+```bash
+$ du -sh test.txt
+58M	test.txt
+```
+
+## * Lazyなし
+```javascript
+$ time nendo ./lazy_sample.nnd 
+*without Lazy*
+ruby
+ruby's
+rubying
+ruby
+ruby's
+=> VmPeak:	  428816 kB  (418MByte)
+65.48user 0.43system 1:11.54elapsed 92%CPU (0avgtext+0avgdata 1572592maxresident)k
+```
+
+## * Lazyあり
+```javascript
+$ time nendo ./lazy_sample.nnd lazy
+*with    Lazy*
+ruby
+ruby's
+rubying
+ruby
+ruby's
+=> VmPeak:	   65544 kB  ( 64MByte)
+2.19user 0.04system 0:02.45elapsed 91%CPU (0avgtext+0avgdata 132704maxresident)k
+```
+
+メモリ消費量が減ったと同時にCPU消費も減ったことも確認できた。
+すばらしい。
+
+## 実験したソースコード
+先日のRubyコードはリファクタリングして読みやすくした。
+ lazy_sample.rb
+ [sample for Enumerable::Lazy of Ruby 2.0 — Gist](http://gist.github.com/61088b4da92abe974b60)
+
+Nendo版はRuby版と対比させやすいようなコーディングにしてあるので比較してみてほしい。
+ lazy_sample.scm
+ [Nendo sample for Enumerable::Lazy of Ruby 2.0 — Gist](http://gist.github.com/afe3903231307738fd56)
+
+## 感想
+Nendoに変更を加えなくてもとりあえずLazyになった。素晴らしすぎるぜ。

@@ -1,0 +1,57 @@
+---
+layout: post
+title: "Sekka 0.9.0 リリース"
+date: 2011-08-24
+categories: Sekka
+---
+SKKライクな日本語入力メソッド *[Sekka*] 0.9.0をリリースしました。(リリースノート *[Sekka.ReleaseNote*])
+ ![img](http://mrg.bz/NbpKsE)
+
+目玉は、「平仮名フレーズ」と「スペースキーでの変換確定」です。
+
+## 平仮名フレーズ
+Sekka 0.8.8 では、
+```
+nateimasu
+```
+を変換すると辞書が無いので、入力通り「なています」となります。
+まあよくあるタイプミスですね。
+
+Sekka 0.9.0 では、
+```
+nateimasu
+```
+を変換すると平仮名フレーズ辞書から一番近い「なっています」を第一候補に挙げてきます。
+
+まあ、この機能を入れたからといって、いつも人間に都合の良い結果になるとは限らないのは他のIMEと同じくSekkaもその限りでは無いのですが、まあものは試しでしばらく使ってみて、辞書の内容を微調整していこうと思います。
+※ 辞書が新しくなっているので、確固バージョンのSekkaをお使いの場合は*[Sekka.VersionUp*]を参考に、辞書も更新してください。
+
+## スペースキーでの変換確定
+Ctrl-J以外にスペースキーでも変換確定できるようになりました。(但し、サジェストモード期間中のみスペースキーが効きます)
+これまではCtrl-Jだけしか使えなかったためCtrl-Jを大量に押す必要があり、かなり慣れが必要でした。
+これで、MS-IMEやことえりなどの一般的な日本語入力システムに近いタイピングで変換ができるようになりました。
+
+※ サジェストとは以下のようにリアルタイムで第一変換候補フィードバックされる機能のことです。
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/xVgO1JoOKAs" frameborder="0" allowfullscreen></iframe>
+
+## version 0.9.0 変更点
+- 平仮名入力時も平仮名フレーズ辞書でスペルミスを救済するようにした。
+ 辞書ソースはWebCorpusとipadic-2.7.0を使用した。
+  [N-gram コーパス - 日本語ウェブコーパス 2010](http://s-yata.jp/corpus/nwc2010/ngrams/)
+  [Index of /stable/ipadic](http://chasen.aist-nara.ac.jp/stable/ipadic/)
+  *経緯など*
+   [平仮名フレーズ辞書を追加してみようかな(1)](/blog-archive/2011/07/06/let-s-add-a-hiragana-phrase-dictionary-1/)
+   [平仮名フレーズ辞書を追加してみようかな(2)](/blog-archive/2011/07/07/i-might-try-adding-a-hiragana-phrase-dictionary-2/)
+   [平仮名フレーズ辞書を追加してみようかな(3)](/blog-archive/2011/07/13/i-might-try-adding-a-hiragana-phrase-dictionary-3/)
+   [平仮名フレーズ辞書を追加してみようかな(4)](/blog-archive/2011/08/10/let-s-add-a-hiragana-phrase-dictionary-4/)
+- gemの依存規則で、Nendoの必須バージョンを0.5.3に限定した。
+- 継続的インテグレーションを開始した。
+  [Travis CI](http://travis-ci.org/)でCRuby 1.9.2とCRuby 1.9.3のテストを通るようにした。
+  Travis CIのテスト環境用にkvs.rbにdbmとRubyのHash(オンメモリ)での辞書管理を追加した。
+- リアルタイム候補表示中(サジェスト期間中)はスペースキーで変換可能なユーザ・インタフェースにした。
+ カスタマイズ変数 sekka-kakutei-with-spacekey で有効/無効を制御できる。
+ デフォルトは有効。
+
+## 次の目標
+ユーザ・インタフェースを少しづつ改善していきます。
+また、辞書用ストレージとしてredisも選択できるようにしたいと考えています。

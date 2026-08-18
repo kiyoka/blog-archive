@@ -1,0 +1,20 @@
+---
+layout: post
+title: "Nendo 0.5.2 リリース"
+date: 2011-07-30
+categories: Nendo
+---
+*[Nendo*] 0.5.2をリリースしました。(リリースノート: *[Nendo.ReleaseNote*])
+![img]({{ "/assets/images/rubygems_icon_128.png" | relative_url }})
+## リリースの目玉
+高速化しました。
+- 固定長引数の関数呼び出しは、末尾再帰呼び出しのトランポリンを経由せずRubyのメソッドを直接呼び出す最適化を行った。
+ => ビルトイン関数の最適化のみに適用した。
+ => tak関数で約6.5倍、長さ10000のリストのmap filter for-eachがversion 0.5.1に比べて4倍の高速化となった。
+
+全体的に体感速度が良くなっています。
+これは*[Sekka*] 0.8.8の変換速度として体感することができます。(*[Sekka*]は後日リリース予定)
+
+## 次の目標
+前回と変わらず、例外処理まわり何とかしたいです。
+(参考:[Nendo 0.5.1 リリース](/blog-archive/2011/06/24/nendo-0-5-1-released/))

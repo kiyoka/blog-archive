@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Sekka 0.9.2 リリース"
+date: 2011-09-17
+categories: Sekka
+---
+SKKライクな日本語入力メソッド *[Sekka*] 0.9.2をリリースしました。(リリースノート *[Sekka.ReleaseNote*])
+ ![img](http://mrg.bz/NbpKsE)
+
+過去の日記で何度か実験の様子を書きましたが、ついにRedisをサポートしました。
+これまで通り、Tokyo Cabinetも使えます。
+RAMが大量に余っている環境では、Redisを試してみてください。(800MByteくらい余っていることが望ましい)
+非常にレスポンスが良くなります。辞書学習のディスク書き込みが遅延されているためか、ディスクIO特有の引っ掛かりは無くなります。
+体感的には全てmemcachedにキャッシュされているという感じです。
+
+注意:  *[Sekka.VersionUp*]を参考に古い辞書を一旦削除してください。
+
+## version 0.9.2
+- 辞書用ストレージとして、Redisに対応した。
+ *経緯など*
+  [Redisを試す](/blog-archive/2011/09/08/try-redis/)
+  [Redisは仮想メモリ機能を使ってメモリを節約してくれる](/blog-archive/2011/09/10/redis-uses-virtual-memory-features-to-save-memory/)
+- 辞書にバージョン番号を含めた。(key=SEKKA::VERSION)
+  *[Sekka.VersionUp*]を参考に古い辞書を一旦削除してください。
+  sekka-serverへの辞書データアップロード済みかどうかを、上記のキー(SEKKA::VERSION)の有無で判断します。
+- 'q'キーで無変換を指定するユーザ・インタフェースを追加した。
+  有効/無効は、sekka-muhenkan-keyで 'q' 以外のキーに変更可能。
+
+## 次の目標
+特に決まったTODOは無いので、気がついたユーザ・インタフェースの改良などを随時やっていきます。

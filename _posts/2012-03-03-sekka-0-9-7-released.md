@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Sekka 0.9.7 リリース"
+date: 2012-03-03
+categories: Sekka
+---
+SKKライクな日本語入力メソッド *[Sekka*] 0.9.7をリリースしました。(リリースノート *[Sekka.ReleaseNote*])
+ ![img]({{ "/assets/images/iStock_000016378483XSmall.jpg" | relative_url }})
+
+## リリースの概要
+主に、Debianパッケージ化の作業が中心です。
+rubygems-testに対応し、"gem test sekka"でテストが走るようにし、gem2debでDebianパッケージ化するとそのままではsekka-serverが起動しない問題を解決しました。
+
+以下リリースノートです。
+## version 0.9.7
+- jewelerの仕様変更に対応した
+-- カレントディレクトリにGemfileがあると、生成されたgemspecの依存規則に採用されてしまう。
+-- SekkaのGemfileはTrivis CI専用なので gemfiles/Gemfile に移動した。
+- rubygems-testに対応した
+-- .gemfileをgemに含めた。
+-- "rake" のデフォルトタスクではredisのテストを省いた。
+-- 辞書データフォーマット変換の出力を簡潔にした。(MD5の結果値のみにした)
+-- STDOUT出力と、STDERR出力を混ぜるとrubygems-testがブロックする問題の回避
+テストのコンソール出力は、STDOUTのみ使うようにした。
+- gem2debでDebianパッケージ化してもsekka-serverが正常に起動するようにした。
+-- sekka.ruのパスを RbConfig::CONFIG*'vendordir'* を使って解決するようにした。
+ 但し、RbConfig::CONFIG*'vendordir'* 配下にsekka.ruが無い場合は、
+ これまで通りsekka-server自身からの相対パスを使う。
+
+## 次の目標
+先日のエントリ([Sekkaにトライ木の実装が必要な理由](/blog-archive/2012/02/25/why-sekka-needs-a-trie-tree-implementation/))で書いたように、辞書のデータ構造に手を入れて辞書検索の計算量を減らす実験をしてみようと思います。うまくいくかは実験結果次第です。
