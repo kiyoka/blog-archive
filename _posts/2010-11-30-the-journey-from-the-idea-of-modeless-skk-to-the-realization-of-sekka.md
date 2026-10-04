@@ -44,7 +44,7 @@ Ctrl-Jだけを使うというアイデアは、現在のSekkaで実現できて
 
 8月下旬には、プロトタイプを使って日本語入力ができていたようだ。
 
- *[kiyoka.2010_08_27*] *Nendo**Sekka* Sekkaを[Rack](http://rack.rubyforge.org/)に載せて、試験運用中
+ *[kiyoka.2010_08_27*] *Nendo**Sekka* Sekkaを[Rack](https://rack.github.io/)に載せて、試験運用中
    sekka.elを1日程度ででっちあげて、このブログはEmacs+Sekkaで書いてい
    る。(勝手知ったるsumibi.elを改造したのでそんな期間でできたのだが…)
 

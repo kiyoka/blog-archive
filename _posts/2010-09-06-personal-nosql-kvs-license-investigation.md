@@ -65,7 +65,7 @@ Heroku上でmongoHQというadd-onsで利用可能なので、SaaS環境もOK。
 - ライセンス: 〇 MIT
 - Ruby1.9.x対応: ？
 - memcachedの互換プロトコル: × 
-- 提供SaaSベンダ: [Cloudant: CouchDB hosting](http://cloudant.com/)(herokuのオプションとして使用可能)
+- 提供SaaSベンダ: [Cloudant: CouchDB hosting](https://www.ibm.com/products/cloudant)(herokuのオプションとして使用可能)
 
 ## [Kumofs](http://kumofs.sourceforge.net/)
 特に、専用クライアントは無いようだ。memcahced互換プロトコルなので、memcachedクライアントを使う。

@@ -14,7 +14,7 @@ categories: Nendo
 *[Nendo.ReferenceManual*] 
 
 今回のポイントはgemライブラリを利用する上で全般的に足りなかった機能が追加されたことでしょう。
-0.3.3以後は[Kyoto Cabinet](http://fallabs.com/kyotocabinet/)を使った*[Sekka*]という日本語入力メソッドを作りながら足りない部分を補いました。
+0.3.3以後は[Kyoto Cabinet](https://dbmx.net/kyotocabinet/)を使った*[Sekka*]という日本語入力メソッドを作りながら足りない部分を補いました。
 
 中でも、 (&block ...)構文は重要な機能追加です。
 (&block ...) 構文を使えば、Rubyのブロックその物が生成可能です。
@@ -39,7 +39,7 @@ open ("sample.rb" ) {|f|
          (print ("# " + (line.chop)))))))
 ```
 
-次は、[Kyoto Cabinet](http://fallabs.com/kyotocabinet/)のAPIを使う例です。
+次は、[Kyoto Cabinet](https://dbmx.net/kyotocabinet/)のAPIを使う例です。
  *Ruby*
 ```ruby
 #!/usr/local/bin/ruby

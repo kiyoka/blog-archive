@@ -6,7 +6,7 @@ categories: MySQL
 ---
 タイトルは釣りです…  誰か教理由を教えてください。
 そんなことがあるわけないので、何かミスリードがあるに違いない。
- [MySQL ::  MySQL Cluster: スケーラビリティ](http://www-jp.mysql.com/products/cluster/scalability.html)
+ [MySQL ::  MySQL Cluster: スケーラビリティ](https://www.mysql.com/jp/products/cluster/scalability.html)
  ![img](http://pix.am/zzFG.png)
  MySQL Clusterの自動シャーディング
    他の分散型データベースとは異なり、シャード間でクエリーおよびトランザ
@@ -14,4 +14,4 @@ categories: MySQL
    ACIDを犠牲にすることもありません。
 
 もう少し調べてみるつもり。
- [MySQL ::  MySQL Cluster に関する FAQ](http://www-jp.mysql.com/products/cluster/faq.html)
+ [MySQL ::  MySQL Cluster に関する FAQ](https://www.mysql.com/jp/products/cluster/faq.html)

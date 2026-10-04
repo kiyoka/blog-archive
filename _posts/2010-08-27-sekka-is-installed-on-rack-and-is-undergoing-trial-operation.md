@@ -5,7 +5,7 @@ date: 2010-08-27
 categories: Nendo
 ---
 現在、新しい日本語入力メソッド(Sekka)を開発中だ。
-とりあえず[Rack](http://rack.rubyforge.org/)に載せることができた。(結局先日書いた方法で*[Nendo*]の定義関数をRackからうまく呼びだすことができたのである)
+とりあえず[Rack](https://rack.github.io/)に載せることができた。(結局先日書いた方法で*[Nendo*]の定義関数をRackからうまく呼びだすことができたのである)
  ![img](http://rack.rubyforge.org/rack-logo.png)
 sekka.elを1日程度ででっちあげて、このブログはEmacs+Sekkaで書いている。(勝手知ったるsumibi.elを改造したのでそんな期間でできたのだが…)
 まだまだ使いにくい所がたくさんあるので、結論は出しにくいけれど、まあまあ希望が持てそうな使い心地だ。

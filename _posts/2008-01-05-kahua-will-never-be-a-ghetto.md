@@ -9,7 +9,7 @@ TechCrunchの記事[Zed Shaw Puts The Smack Down On The Rails Community](http://
 Zed Shaw氏の原文はちゃんと読んでいないけど、Ruby/Railsコミュニティーからはもう手を引くとのこと。
 要するにPHPコミュニティー見たいに『A bunch of half-trained former PHP morons』が押し寄せてきてひどい状況になっているということらしい。
 私もちょっとの間PHPメーリングリストを読んでいて、質の低さにウンザリした記憶があるので多少は納得できる。
-一方の*[Kahua*]コミュニティーには、良くも悪くも[S式暗号(過去のkiyoka日記より)](http://www.netfort.gr.jp/~kiyoka/diary/?date=20060404)という高い参入障壁があるので、そうは成りそうにない。
+一方の*[Kahua*]コミュニティーには、良くも悪くも[S式暗号(過去のkiyoka日記より)](/blog-archive/2006/04/04/s-style-cipher/)という高い参入障壁があるので、そうは成りそうにない。
 要はバランスで、WebフレームワークのコミュニティーにはPHPコミュニティーから[Seaside.st](http://www.seaside.st/)コミュニティーまでいろいろあるが、ちょうど中間地点がいいと思う。
 *[Kahua*]はどちらかというと、Seasideよりだと思うので、もうちょっと中間地点側に寄せた方がいいと思う。
 どうやって寄せるかは、キラーアプリを作って見せるのが一番だが、言語がSchemeだということもあって、それだけでは駄目なのかも知れない。

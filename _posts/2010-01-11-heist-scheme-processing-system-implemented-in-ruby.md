@@ -13,7 +13,7 @@ SICPを読んでいるうちに一度実装してみたくなったという感�
 
 勉強の割には、参考にできそうな所がいくもありそう。
 ソースが公開されているので、簡潔に実装する方法については参考になるだろう。(まだ細かくはソースを読んでいないが...)
-まず、[heist](http://github.com/jcoglan/heist)は[Treetop](http://treetop.rubyforge.org)というPEGパーサージェネレータを利用していてパーサーが短く書かれている様だ。
+まず、[heist](http://github.com/jcoglan/heist)は[Treetop](https://cjheath.github.io/treetop/)というPEGパーサージェネレータを利用していてパーサーが短く書かれている様だ。
  参考: [InfoQ: Treetop-Ruby用のPEGパーサージェネレータ](http://www.infoq.com/jp/news/2008/01/treetop-ruby-parser-generator)
 これは*[Nendo*]にも取り入れたい。*[Nendo*]はlexerとパーサーをベタで書いているので結構行数を食っているのだ。
 

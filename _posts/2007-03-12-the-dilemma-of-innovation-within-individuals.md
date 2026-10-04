@@ -4,7 +4,7 @@ title: "個人の中のイノベーションのジレンマ"
 date: 2007-03-12
 categories: 本
 ---
-[前回](http://www.netfort.gr.jp/~kiyoka/diary/?date=20070306)の続きで『イノベーションのジレンマ』の応用編です。
+[前回](/blog-archive/2007/03/06/read-the-innovation-dilemma-when-technological-innovation-destroys-giant-companies/)の続きで『イノベーションのジレンマ』の応用編です。
  {% include amazon.html asin="4798100234" title="イノベーションのジレンマ―技術革新が巨大企業を滅ぼすとき" author="クレイトン・クリステンセン, 玉田 俊平太, 伊豆原 弓" %}
 これを読んでいて、これは個人の中にも同様のジレンマが存在するのでは無いかと思うようになったので書いておきます。
 うまくまとめられるか自信がありませんが。
